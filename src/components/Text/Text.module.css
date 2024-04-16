@@ -1,0 +1,41 @@
+.title {
+    font-family: "Roboto";
+    font-weight: 700;
+    line-height: 48px;
+    font-size: 44px;
+}
+
+.button {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 18px;
+    font-size: 18px;
+}
+
+.p-20 {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 24px;
+    font-size: 20px;
+}
+
+.p-18 {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 18px;
+}
+
+.p-16 {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.p-14 {
+    font-family: "Roboto";
+    font-weight: 400;
+    line-height: 18px;
+    font-size: 14px;
+}
