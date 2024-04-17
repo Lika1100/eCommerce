@@ -1,3 +1,17 @@
+.arrow_block {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding-top: 68px;
+    padding-bottom: 40px;
+    text-decoration: none;
+}
+
+.arrow {
+    width: 30px;
+    height: 30px;
+}
+
 .card {
     display: flex;
     max-height: 600px;

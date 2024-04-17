@@ -1,14 +1,19 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ListOfProducts } from "../Products/Products";
 import { baseUrl } from "../Products/Products";
 import styles from "./Product.module.css";
 import Text from "../Text/Text";
-import Button from "../Button/Button"
+import Button from "../Button/Button";
 
 export default function Product() {
     const { productId } = useParams();
+    const navigate = useNavigate();
+
+    function goBack() {
+        navigate(-1)
+    }
 
     const [product, setProduct] = useState<ListOfProducts | null>(null)
     const [loading, setLoading] = useState(true)
@@ -18,10 +23,15 @@ export default function Product() {
                 setProduct(res.data)
                 setLoading(false)
             })
-    }, [])
+    }, [productId])
 
     return (
         <div className={styles.product}>
+            <button className={styles.arrow_block} onClick={goBack}>
+                <svg className={styles.arrow}><use xlinkHref="/sprite.svg#arrow" /></svg>
+                назад
+            </button>
+
             {!loading && product !== null && (
                 <div className={styles.card} key={product.id}>
                     <div className={styles.img_container}>

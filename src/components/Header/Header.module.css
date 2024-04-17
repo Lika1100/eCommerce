@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-bottom: 2px solid rgba(243, 243, 243, 1);
+}
+
+.header_logo {
+    width: 130px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.header_nav {
+    display: flex;
+    list-style: none;
+    gap: 48px;
+    cursor: pointer;
+}
+
+.header_cart {
+    display: flex;
+    gap: 24px;
+}
+
+.cart,
+.user {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
