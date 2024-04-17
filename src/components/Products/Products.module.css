@@ -24,7 +24,7 @@
 .menu {
     width: 100%;
     display: flex;
-    gap: 8px;
+    gap: 50px;
     position: relative;
     justify-content: center;
     padding: 48px 0;

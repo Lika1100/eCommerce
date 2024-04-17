@@ -21,22 +21,25 @@ export interface ListOfProducts {
     category: Category,
 }
 
-export type ProductsProps = {
-    page: number,
-    setPage: React.Dispatch<React.SetStateAction<number>>
-}
-
-export const Products: React.FC<ProductsProps> = ({ page, setPage }) => {
+export const Products = () => {
     const numOfProducts = 9
     const navigate = useNavigate();
+    const [page, setPage] = useState<number>(1)
 
-    function back(page: number) {
-        setPage(prev => prev - 1)
-        navigate(`/${page}`)
+    function back() {
+        navigate(`/${page - 1}`)
+        setPage(() => {
+            if (page === 1) {
+                return 1
+            }
+            return page - 1
+        })
     }
-    function next(page: number) {
-        setPage(prev => prev + 1)
-        navigate(`/${page}`)
+    function next() {
+        navigate(`/${page + 1}`)
+        setPage(() => {
+            return page + 1
+        })
     }
 
     function handleClick(productId: number) {
@@ -71,10 +74,10 @@ export const Products: React.FC<ProductsProps> = ({ page, setPage }) => {
                 })}
             </div>
             <div className={styles.menu}>
-                <button onClick={() => back(page)}>
+                <button onClick={back}>
                     <svg className={styles.arrow_left}><use xlinkHref="/sprite.svg#arrow" /></svg>
                 </button>
-                <button onClick={() => next(page)}>
+                <button onClick={next}>
                     <svg className={styles.arrow_right}><use xlinkHref="/sprite.svg#arrowRight" /></svg>
                 </button>
             </div>
