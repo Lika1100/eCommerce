@@ -21,29 +21,36 @@ export interface ListOfProducts {
     category: Category,
 }
 
-export const Products = () => {
-    const numOfProducts = 9
+const limit = 9
+
+export type PageProps = {
+    page: number,
+    setPage: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const Products: React.FC<PageProps> = ({ page, setPage }) => {
+
     const navigate = useNavigate();
-    const [page, setPage] = useState<number>(1)
+
 
     function back() {
-        navigate(`/${page - 1}`)
-        setPage(() => {
-            if (page === 1) {
+        setPage((prev) => {
+            if (prev === 1) {
                 return 1
             }
-            return page - 1
+            return prev - 1
         })
+        navigate(`/${page}`)
     }
     function next() {
-        navigate(`/${page + 1}`)
-        setPage(() => {
-            return page + 1
+        setPage((prev) => {
+            return prev + 1
         })
+        navigate(`/${page}`)
     }
 
     function handleClick(productId: number) {
-        navigate(`/id/${productId}`)
+        navigate(`${productId}`)
     }
 
     const [products, setProducts] = useState<ListOfProducts[]>([])
@@ -51,12 +58,29 @@ export const Products = () => {
 
 
     useEffect(() => {
-        axios.get<ListOfProducts[]>(`${baseUrl}?limit=${numOfProducts}&offset=${page * numOfProducts - numOfProducts}`)
-            .then(res => {
-                setProducts(res.data)
-                setLoading(false)
-            })
-    }, [page])
+        const fetch = async () => {
+            const result = await axios({
+                method: 'get',
+                url: baseUrl
+            });
+
+            setProducts(result.data
+                .map((raw: ListOfProducts) => {
+                    return {
+                        id: raw.id,
+                        description: raw.description,
+                        images: raw.images,
+                        price: raw.price,
+                        title: raw.title
+                    }
+                })
+                .slice(page * limit - limit, page * limit)
+            )
+        }
+        fetch();
+        setLoading(false)
+    }, [page, location])
+
 
     if (loading) {
         return "loading"

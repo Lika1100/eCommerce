@@ -1,18 +1,18 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ListOfProducts } from "../Products/Products";
+import { ListOfProducts, PageProps } from "../Products/Products";
 import { baseUrl } from "../Products/Products";
 import styles from "./Product.module.css";
 import Text from "../Text/Text";
 import Button from "../Button/Button";
 
-export default function Product() {
+export const Product: React.FC<PageProps> = ({ page }) => {
     const { productId } = useParams();
     const navigate = useNavigate();
 
     function goBack() {
-        navigate(-1)
+        navigate(`/${page}`)
     }
 
     const [product, setProduct] = useState<ListOfProducts | null>(null)
@@ -24,7 +24,7 @@ export default function Product() {
                 setLoading(false)
             })
     }, [productId])
-
+    console.log(productId, page)
     return (
         <div className={styles.product}>
             <button className={styles.arrow_block} onClick={goBack}>
