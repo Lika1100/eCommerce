@@ -1,4 +1,5 @@
-/**@jsx Link */
+// eslint-disable-next-line import/default
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 

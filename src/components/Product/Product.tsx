@@ -1,5 +1,5 @@
-/**@jsxFrag Loader */
-/**@jsx Text*/
+// eslint-disable-next-line import/default
+import React from "react";
 import { useParams } from "react-router-dom";
 import Button from "components/Button";
 import Loader from "components/Loader";

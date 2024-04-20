@@ -1,5 +1,3 @@
-/**@jsx Loader*/
-/**@jsxFrag */
 import cn from "classnames";
 // eslint-disable-next-line import/default
 import React from "react";

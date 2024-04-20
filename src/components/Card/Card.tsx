@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
-/**@jsx Text */
 import cn from "classnames";
+// eslint-disable-next-line import/default
+import React from "react";
 import Button from "components/Button";
 import Text from "components/Text";
 import styles from "./Card.module.scss";
@@ -14,7 +14,7 @@ export type CardProps = {
     className?: string
 };
 
-const Card: React.FC<CardProps> = ({ id, title, description, images, price, className }): JSX.Element => {
+const Card: React.FC<CardProps> = ({ id, title, description, images, price, className }) => {
     return (
         <div className={cn(className, styles.card)} key={id}>
             <img className={styles.card__image} src={images[0]} alt="card" />

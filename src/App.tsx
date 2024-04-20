@@ -1,5 +1,5 @@
-/**@jsxFrag */
-/**@jsx Products */
+// eslint-disable-next-line import/default
+import React from 'react';
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Product from 'components/Product';

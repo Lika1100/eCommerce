@@ -1,14 +1,11 @@
-/**@jsx FooterButtonLinks */
-import { useParams } from "react-router-dom";
+
+// eslint-disable-next-line import/default
+import React, { useParams } from "react-router-dom";
 import FooterButtonLinks from "components/FooterButtonsLinks";
 import useNavigatePages from "configs/useNavigatePages";
 import styles from "./FooterNavigation.module.scss";
 
-type FooterProps = {
-    page: string
-}
-
-const FooterNavigation: React.FC<FooterProps> = (): JSX.Element => {
+const FooterNavigation = () => {
     const { page = "1" } = useParams()
     const { back, next } = useNavigatePages(page)
     return (

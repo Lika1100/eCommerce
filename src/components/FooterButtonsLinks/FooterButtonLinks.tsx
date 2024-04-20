@@ -1,5 +1,6 @@
-/**@jsx Button */
 import cn from "classnames";
+// eslint-disable-next-line import/default
+import React from "react";
 import { useParams } from "react-router-dom";
 import Button from "components/Button";
 import useNavigatePages from "configs/useNavigatePages";

@@ -1,6 +1,6 @@
-/**@jsx Loader */
-
 import cn from "classnames";
+// eslint-disable-next-line import/default
+import React from "react";
 import Loader from "components/Loader";
 import styles from "./Button.module.scss"
 
@@ -11,7 +11,6 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     disabled: boolean
 };
 
-// eslint-disable-next-line react/prop-types
 const Button: React.FC<ButtonProps> = ({ loading, children, className, disabled }): JSX.Element => {
     return (
         <button

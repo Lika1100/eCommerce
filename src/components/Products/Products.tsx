@@ -1,6 +1,5 @@
-/**@jsx Loader */
-/**@jsxFrag */
-import { useMemo } from "react";
+// eslint-disable-next-line import/default
+import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import Card from "components/Card";
 import FooterNavigation from "components/FooterNavigation";
@@ -38,7 +37,7 @@ const Products = () => {
                         )
                     })}
             </div>
-            <FooterNavigation page={page} />
+            <FooterNavigation/>
         </>
     )
 }
