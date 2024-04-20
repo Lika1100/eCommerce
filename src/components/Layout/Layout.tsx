@@ -1,8 +1,9 @@
-import Header from "components/Header/Header";
+/**@jsx Header*/
 import { Outlet } from "react-router-dom";
+import Header from "components/Header/Header";
 import styles from "./Layout.module.scss";
 
-export default function Layout() {
+function Layout():JSX.Element {
     return (
         <div className={styles.layout}>
             <Header />
@@ -10,3 +11,5 @@ export default function Layout() {
         </div>
     );
 }
+
+export default Layout

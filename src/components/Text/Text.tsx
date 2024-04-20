@@ -1,5 +1,10 @@
-import styles from "./Text.module.scss";
+/**@jsx Tag*/
+/**@jsxFrag */
 import cn from "classnames";
+// eslint-disable-next-line import/default
+import React from "react";
+import styles from "./Text.module.scss";
+
 
 export type TextProps = {
     className?: string;

@@ -1,8 +1,9 @@
-import styles from "./FooterButtonLinks.module.scss";
-import Button from "components/Button";
+/**@jsx Button */
 import cn from "classnames";
-import useNavigatePages from "configs/useNavigatePages";
 import { useParams } from "react-router-dom";
+import Button from "components/Button";
+import useNavigatePages from "configs/useNavigatePages";
+import styles from "./FooterButtonLinks.module.scss";
 
 function FooterButtonLinks() {
     const { page = "1" } = useParams()
@@ -16,10 +17,12 @@ function FooterButtonLinks() {
     return (
         <div className={styles.footer}>
             {arrayOfButtons.map((button, i) => {
-                return <Button key={i} children={button}
-                    onClick={() => goToChosenPage(button)}
-                    className={cn(styles.footer__button,
-                        { [styles.footer__button_active]: +page === button })} />
+                return <Button key={i}
+                onClick={() => goToChosenPage(button)}
+                className={cn(styles.footer__button,
+                    { [styles.footer__button_active]: +page === button })} disabled={false}>
+                            {button}
+                        </Button>
             })}
         </div>
     );

@@ -1,13 +1,14 @@
+/**@jsx FooterButtonLinks */
+import { useParams } from "react-router-dom";
+import FooterButtonLinks from "components/FooterButtonsLinks";
 import useNavigatePages from "configs/useNavigatePages";
 import styles from "./FooterNavigation.module.scss";
-import FooterButtonLinks from "components/FooterButtonsLinks";
-import { useParams } from "react-router-dom";
 
 type FooterProps = {
     page: string
 }
 
-const FooterNavigation: React.FC<FooterProps> = () => {
+const FooterNavigation: React.FC<FooterProps> = (): JSX.Element => {
     const { page = "1" } = useParams()
     const { back, next } = useNavigatePages(page)
     return (

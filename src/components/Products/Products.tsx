@@ -1,20 +1,22 @@
-import styles from "./Products.module.scss";
+/**@jsx Loader */
+/**@jsxFrag */
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import Card from "components/Card";
+import FooterNavigation from "components/FooterNavigation";
 import Loader from "components/Loader";
 import baseUrl from "configs/baseUrl";
 import limit from "configs/limit";
 import useFetch from "configs/useFetch";
-import { useMemo } from "react";
-import ListOfProducts from "types/listOfProducts";
 import useNavigatePages from "configs/useNavigatePages";
-import FooterNavigation from "components/FooterNavigation";
+import ListOfProducts from "types/listOfProducts";
+import styles from "./Products.module.scss";
 
 const Products = () => {
     const { page = "1" } = useParams()
     const { goToProduct } = useNavigatePages(page)
 
-    const query = useMemo(() => ({ limit, offset: limit * +page - limit }), [limit, page])
+    const query = useMemo(() => ({ limit, offset: limit * +page - limit }), [page])
     const res = useFetch<ListOfProducts[]>(baseUrl, query)
 
     if (res.loading) {

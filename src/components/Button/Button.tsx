@@ -1,18 +1,22 @@
-import cn from "classnames";
-import styles from "./Button.module.scss"
-import Loader from "components/Loader";
+/**@jsx Loader */
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    loading?: boolean;
-    children: React.ReactNode;
+import cn from "classnames";
+import Loader from "components/Loader";
+import styles from "./Button.module.scss"
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    loading?: boolean
+    children: React.ReactNode
+    className: string
+    disabled: boolean
 };
 
-const Button: React.FC<ButtonProps> = ({ loading, children, className, disabled, ...props }) => {
+// eslint-disable-next-line react/prop-types
+const Button: React.FC<ButtonProps> = ({ loading, children, className, disabled }): JSX.Element => {
     return (
         <button
             className={cn(styles.button, className)}
             disabled={disabled || loading}
-            {...props}
         >
             {loading && <Loader size='s' color="#fff" />}
             {children}
