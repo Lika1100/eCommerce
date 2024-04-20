@@ -1,0 +1,36 @@
+.text {
+    font-family: "Roboto";
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    .text_title {
+        line-height: 48px;
+        font-size: 44px;
+    }
+
+    .text_button {
+        line-height: 18px;
+        font-size: 18px;
+    }
+
+    .text_p-20 {
+        line-height: 24px;
+        font-size: 20px;
+    }
+
+    .text_p-18 {
+        line-height: 22px;
+        font-size: 18px;
+    }
+
+    .text_p-16 {
+        line-height: 20px;
+        font-size: 16px;
+    }
+
+    .text_p-14 {
+        line-height: 18px;
+        font-size: 14px;
+    }
+}

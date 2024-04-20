@@ -1,28 +1,38 @@
-import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
+import styles from "./Header.module.scss";
 
 export default function Header() {
     return (
-        <div className={styles.header}>
-            <div>
-                <svg className={styles.header_logo}><use xlinkHref="/sprite.svg#logo" /></svg>
-            </div>
-            <div>
-                <ul className={styles.header_nav}>
-                    <li>
+        <header className={styles.header}>
+            <Link to="/">
+                <svg className={styles.header__logo}><use xlinkHref="/sprite.svg#logo" />
+                </svg>
+            </Link>
+            <ul className={styles.header__items}>
+                <li className={styles.header__item}>
+                    <Link to="/">
                         Products
-                    </li>
-                    <li>
+                    </Link>
+                </li>
+                <li className={styles.header__item}>
+                    <Link to="#">
                         Categories
-                    </li>
-                    <li>
+                    </Link>
+                </li>
+                <li className={styles.header__item}>
+                    <Link to="#">
                         About us
-                    </li>
-                </ul>
+                    </Link>
+                </li>
+            </ul>
+            <div className={styles.header__icons}>
+                <Link to="#">
+                    <svg className={styles.header__iconCart}><use xlinkHref="/sprite.svg#cart" /></svg>
+                </Link>
+                <Link to="#">
+                    <svg className={styles.header__iconUser}><use xlinkHref="/sprite.svg#user" /></svg>
+                </Link>
             </div>
-            <div className={styles.header_cart}>
-                <svg className={styles.cart}><use xlinkHref="/sprite.svg#cart" /></svg>
-                <svg className={styles.user}><use xlinkHref="/sprite.svg#user" /></svg>
-            </div>
-        </div>
+        </header>
     )
 }

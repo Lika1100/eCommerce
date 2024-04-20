@@ -1,0 +1,85 @@
+@import "styles/styles";
+
+.header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    max-height: 90px;
+    align-items: center;
+    background-color: $card-bg;
+    border-bottom: 2px solid rgba(243, 243, 243, 1);
+
+    .header__logo {
+        width: 130px;
+        height: 42px;
+        cursor: pointer;
+    }
+
+    .header__items {
+        display: flex;
+        list-style: none;
+    }
+
+    .header__item {
+        padding: 0 24px;
+        cursor: pointer;
+        position: relative;
+        transition: all 200ms ease-in;
+
+        &:hover {
+            color: $text-accent;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            border-bottom: 3px solid $text-accent;
+            width: 100%;
+            left: 0;
+            bottom: -35px;
+            transition: all 200ms ease-in;
+            opacity: 0;
+        }
+
+        &:hover:after {
+            opacity: 1;
+        }
+    }
+
+    .header__icons {
+        display: flex;
+        gap: 24px;
+    }
+
+    .header__iconCart,
+    .header__iconUser {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: all 200ms ease-in;
+        opacity: 1;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .header__item {
+        display: none;
+    }
+
+    //где-то тут будет бургер меню
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        display: none;
+    }
+
+    // и тут будет скоро бургер меню
+
+}

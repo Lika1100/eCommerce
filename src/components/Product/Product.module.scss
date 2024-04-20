@@ -1,0 +1,83 @@
+@import "styles/styles";
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    padding-top: 40px;
+
+    .card__arrow {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 5px;
+        ;
+        transition: all 200ms ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .card__image {
+        max-width: 600px;
+        object-fit: contain;
+    }
+
+    .card__titleContainer {
+        display: flex;
+        max-width: 600px;
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .card__footerButtons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 48px;
+    }
+
+    .card__button {
+        color: $text-primary;
+        background-color: $button-primary-text;
+        border: 1px solid $text-primary;
+        opacity: 1;
+        transform: all 200ms liner;
+
+        &:hover {
+            opacity: 0.7;
+            border-color: rgb(0, 0, 0, 0.7);
+        }
+    }
+}
+
+.card__loader {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+}
+
+@media screen and (max-width: 1024px) {
+    .card__image {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        grid-template-columns: 1fr;
+        justify-items: center;
+
+        .card__arrow {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .card__image {
+            width: 100%;
+        }
+    }
+}

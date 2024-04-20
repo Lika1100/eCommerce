@@ -1,111 +1,45 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import styles from "./Products.module.css";
-import { useNavigate } from "react-router-dom";
-import { Card } from "../Card/Card";
+import styles from "./Products.module.scss";
+import { useParams } from "react-router-dom";
+import Card from "components/Card";
+import Loader from "components/Loader";
+import baseUrl from "configs/baseUrl";
+import limit from "configs/limit";
+import useFetch from "configs/useFetch";
+import { useMemo } from "react";
+import ListOfProducts from "types/listOfProducts";
+import useNavigatePages from "configs/useNavigatePages";
+import FooterNavigation from "components/FooterNavigation";
 
-export const baseUrl = "https://api.escuelajs.co/api/v1/products";
-export interface Category {
-    id: number,
-    name: string,
-    image: string,
-    creationAt: string,
-    updatedAt: string
-}
-export interface ListOfProducts {
-    id: number,
-    title?: string,
-    price?: number,
-    description?: string,
-    images: string[],
-    category: Category,
-}
+const Products = () => {
+    const { page = "1" } = useParams()
+    const { goToProduct } = useNavigatePages(page)
 
-const limit = 9
+    const query = useMemo(() => ({ limit, offset: limit * +page - limit }), [limit, page])
+    const res = useFetch<ListOfProducts[]>(baseUrl, query)
 
-export type PageProps = {
-    page: number,
-    setPage: React.Dispatch<React.SetStateAction<number>>
-}
-
-export const Products: React.FC<PageProps> = ({ page, setPage }) => {
-
-    const navigate = useNavigate();
-
-
-    function back() {
-        setPage((prev) => {
-            if (prev === 1) {
-                return 1
-            }
-            return prev - 1
-        })
-        navigate(`/${page}`)
-    }
-    function next() {
-        setPage((prev) => {
-            return prev + 1
-        })
-        navigate(`/${page}`)
-    }
-
-    function handleClick(productId: number) {
-        navigate(`${productId}`)
-    }
-
-    const [products, setProducts] = useState<ListOfProducts[]>([])
-    const [loading, setLoading] = useState(true)
-
-
-    useEffect(() => {
-        const fetch = async () => {
-            const result = await axios({
-                method: 'get',
-                url: baseUrl
-            });
-
-            setProducts(result.data
-                .map((raw: ListOfProducts) => {
-                    return {
-                        id: raw.id,
-                        description: raw.description,
-                        images: raw.images,
-                        price: raw.price,
-                        title: raw.title
-                    }
-                })
-                .slice(page * limit - limit, page * limit)
-            )
-        }
-        fetch();
-        setLoading(false)
-    }, [page, location])
-
-
-    if (loading) {
-        return "loading"
+    if (res.loading) {
+        return <Loader size="l" className={styles.products__loader} />
     }
 
     return (
-        <div>
-            <div className={styles.cards_wrap}>
-                {!loading && products.map(({ price, images, description, id, title }: ListOfProducts) => {
-                    return (
-                        <div onClick={() => handleClick(id)} key={id}>
-                            <Card price={price} images={images} id={id} description={description} title={title} key={id} className={styles.card} />
-                        </div>
-                    )
-                })}
+        <>
+            <div className={styles.cards}>
+                {!res.loading && res.product !== null && res.product
+                    .map(({ price, images, description, id, title }: ListOfProducts) => {
+                        return (
+                            <div onClick={() => goToProduct(id)} key={id}>
+                                <Card price={price} images={images} id={id}
+                                    description={description} title={title}
+                                    key={id} className={styles.cards__item}
+                                />
+                            </div>
+                        )
+                    })}
             </div>
-            <div className={styles.menu}>
-                <button onClick={back}>
-                    <svg className={styles.arrow_left}><use xlinkHref="/sprite.svg#arrow" /></svg>
-                </button>
-                <button onClick={next}>
-                    <svg className={styles.arrow_right}><use xlinkHref="/sprite.svg#arrowRight" /></svg>
-                </button>
-            </div>
-        </div>
+            <FooterNavigation page={page} />
+        </>
     )
 }
+
+export default Products
 

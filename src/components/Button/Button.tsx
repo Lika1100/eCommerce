@@ -1,27 +1,20 @@
 import cn from "classnames";
-import styles from "./Button.module.css"
+import styles from "./Button.module.scss"
+import Loader from "components/Loader";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    /** Состояние загрузки */
     loading?: boolean;
-    /** Текст кнопки */
     children: React.ReactNode;
 };
 
 const Button: React.FC<ButtonProps> = ({ loading, children, className, disabled, ...props }) => {
     return (
         <button
-            className={cn(styles.button, className, {
-                [styles.button_disabled]: disabled,
-                [styles.button_load]: loading,
-                [styles.button_active]: !loading && !disabled,
-                /* [styles.button_hover_load_not_disabled]: loading && disabled, */
-                [styles.button_hover_load]: loading && !disabled,
-            })}
+            className={cn(styles.button, className)}
             disabled={disabled || loading}
             {...props}
         >
-            {/* {loading && <Loader className="loader-button" size='s' />} */}
+            {loading && <Loader size='s' color="#fff" />}
             {children}
         </button>
     )

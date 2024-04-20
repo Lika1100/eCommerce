@@ -1,0 +1,21 @@
+@import "styles/styles";
+
+.footer {
+    display: flex;
+    min-width: 190px;
+
+    .footer__button {
+        width: 38px;
+        height: 42px;
+        background-color: transparent;
+        color: $text-primary;
+        padding: 0;
+        justify-content: center;
+
+    }
+
+    .footer__button_active {
+        background-color: $brand;
+        color: $card-bg;
+    }
+}
