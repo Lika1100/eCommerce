@@ -29,9 +29,15 @@ const Product = () => {
                     </svg>
                     <img className={styles.card__image} src={res.product.images[0]} alt="card" />
                     <div className={styles.card__titleContainer}>
-                        <Text view='title' maxLines={2} weight='bold' color='primary' tag="h2">{res.product.title}</Text>
-                        <Text view='p-20' maxLines={3} color="secondary">{res.product.description}</Text>
-                        <Text view='title' weight='bold' className='contentSlot' tag="h2">{`$${res.product.price}`} </Text>
+                        <Text view='title' maxLines={2} weight='bold' color='primary' tag="h2">
+                            {res.product.title}
+                        </Text>
+                        <Text view='p-20' maxLines={3} color="secondary">
+                            {res.product.description}
+                        </Text>
+                        <Text view='title' weight='bold' className='contentSlot' tag="h2">
+                            {`$${res.product.price}`} 
+                        </Text>
                         <div className={styles.card__footerButtons}>
                             <Button disabled={false} className={""}>Buy now</Button>
                             <Button className={styles.card__button} disabled={false}>Add to Cart</Button>

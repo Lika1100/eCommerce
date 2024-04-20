@@ -16,8 +16,8 @@ export type CardProps = {
 
 const Card: React.FC<CardProps> = ({ id, title, description, images, price, className }) => {
     return (
-        <div className={cn(className, styles.card)} key={id}>
-            <img className={styles.card__image} src={images[0]} alt="card" />
+        <div className={cn(className)} key={id}>
+            <img className={styles.card__image} src={images[0]} alt="card"/>
             <div className={styles.card__titleContainer}>
                 <Text view='p-20' maxLines={2} weight='bold' color='primary'>{title}</Text>
                 <Text view='p-16' maxLines={3} color="secondary">{description}</Text>
