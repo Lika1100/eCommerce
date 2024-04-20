@@ -78,6 +78,13 @@
 
         .card__image {
             width: 100%;
+            z-index: 1;
         }
+
+        .card__footerButtons {
+            gap: 24px;
+            justify-content: space-between;
+        }
+
     }
 }

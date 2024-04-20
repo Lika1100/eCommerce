@@ -16,16 +16,18 @@ function FooterButtonLinks() {
     }
 
     return (
-        <div className={styles.footer}>
-            {arrayOfButtons.map((button, i) => {
-                return <Button key={i}
-                onClick={() => goToChosenPage(button)}
-                className={cn(styles.footer__button,
-                    { [styles.footer__button_active]: +page === button })} disabled={false}>
-                            {button}
-                        </Button>
-            })}
-        </div>
+        <React.Fragment>
+            {<div className={styles.footer}>
+                {arrayOfButtons.map((button, i) => {
+                    return <Button key={i}
+                        onClick={() => goToChosenPage(button)}
+                        className={cn(styles.footer__button,
+                            { [styles.footer__button_active]: +page === button })} disabled={false}>
+                        {button}
+                    </Button>
+                })}
+            </div>}
+        </React.Fragment>
     );
 
 }

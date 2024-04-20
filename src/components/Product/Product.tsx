@@ -21,7 +21,7 @@ const Product = () => {
     }
 
     return (
-        <>
+        <React.Fragment>
             {!res.loading && res.product !== null && (
                 <div className={styles.card} key={res.product.id}>
                     <svg onClick={backToProducts} className={styles.card__arrow}>
@@ -39,7 +39,7 @@ const Product = () => {
                     </div>
                 </div>
             )}
-        </>
+        </React.Fragment>
     )
 }
 

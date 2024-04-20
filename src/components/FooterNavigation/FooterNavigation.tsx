@@ -5,7 +5,7 @@ import FooterButtonLinks from "components/FooterButtonsLinks";
 import useNavigatePages from "configs/useNavigatePages";
 import styles from "./FooterNavigation.module.scss";
 
-const FooterNavigation = () => {
+const FooterNavigation = (): JSX.Element => {
     const { page = "1" } = useParams()
     const { back, next } = useNavigatePages(page)
     return (

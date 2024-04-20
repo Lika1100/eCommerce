@@ -23,7 +23,7 @@ const Products = () => {
     }
 
     return (
-        <>
+        <React.Fragment>
             <div className={styles.cards}>
                 {!res.loading && res.product !== null && res.product
                     .map(({ price, images, description, id, title }: ListOfProducts) => {
@@ -38,7 +38,7 @@ const Products = () => {
                     })}
             </div>
             <FooterNavigation/>
-        </>
+        </React.Fragment>
     )
 }
 
