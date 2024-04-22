@@ -1,8 +1,8 @@
 import cn from "classnames";
-// eslint-disable-next-line import/default
-import React from "react";
+import * as React from 'react';
 import Loader from "components/Loader";
-import styles from "./Button.module.scss"
+import styles from "./Button.module.scss";
+
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     loading?: boolean

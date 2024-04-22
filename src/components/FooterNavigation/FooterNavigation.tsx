@@ -1,6 +1,4 @@
-
-// eslint-disable-next-line import/default
-import React, { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FooterButtonLinks from "components/FooterButtonsLinks";
 import useNavigatePages from "configs/useNavigatePages";
 import styles from "./FooterNavigation.module.scss";

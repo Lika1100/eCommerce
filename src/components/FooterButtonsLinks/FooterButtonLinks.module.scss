@@ -2,20 +2,19 @@
 
 .footer {
     display: flex;
-    min-width: 190px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-    .footer__button {
-        width: 38px;
-        height: 42px;
+    &__link {
+        display: block;
         background-color: transparent;
         color: $text-primary;
-        padding: 0;
-        justify-content: center;
+        padding: 5px 10px;
 
-    }
-
-    .footer__button_active {
-        background-color: $brand;
-        color: $card-bg;
+        &_active {
+            background-color: $brand;
+            color: $card-bg;
+        }
     }
 }

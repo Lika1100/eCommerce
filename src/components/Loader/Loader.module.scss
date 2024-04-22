@@ -1,22 +1,26 @@
-.s {
-    width: 24px;
-    height: 24px;
-}
+.loader {
+    &__size {
+        &_s {
+            width: 24px;
+            height: 24px;
+        }
 
-.m {
-    width: 48px;
-    height: 48px;
-}
+        &_m {
+            width: 48px;
+            height: 48px;
+        }
 
-.l {
-    width: 60px;
-    height: 60px;
-}
+        &_l {
+            width: 60px;
+            height: 60px;
+        }
 
-.s,
-.m,
-.l {
-    animation: rotation 1s linear infinite;
+        &_s,
+        &_m,
+        &_l {
+            animation: rotation 1s linear infinite;
+        }
+    }
 }
 
 @keyframes rotation {

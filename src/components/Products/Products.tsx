@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/default
-import React, { useMemo } from "react";
+import * as React from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import Card from "components/Card";
 import FooterNavigation from "components/FooterNavigation";
@@ -19,11 +19,11 @@ const Products = () => {
     const res = useFetch<ListOfProducts[]>(baseUrl, query)
 
     if (res.loading) {
-        return <Loader size="l" className={styles.products__loader} />
+        return <Loader size="l" className={styles.cards__loader} />
     }
 
     return (
-        <React.Fragment>
+        <>
             <div className={styles.cards}>
                 {!res.loading && res.product !== null && res.product
                     .map(({ price, images, description, id, title }: ListOfProducts) => {
@@ -37,8 +37,8 @@ const Products = () => {
                         )
                     })}
             </div>
-            <FooterNavigation/>
-        </React.Fragment>
+            <FooterNavigation />
+        </>
     )
 }
 

@@ -1,6 +1,5 @@
 import cn from "classnames";
-// eslint-disable-next-line import/default
-import React from "react";
+import * as React from "react";
 import Button from "components/Button";
 import Text from "components/Text";
 import styles from "./Card.module.scss";

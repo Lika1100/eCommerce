@@ -4,32 +4,32 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 
-    .text_title {
+    &_title {
         line-height: 48px;
         font-size: 44px;
     }
 
-    .text_button {
+    &_button {
         line-height: 18px;
         font-size: 18px;
     }
 
-    .text_p-20 {
+    &_p-20 {
         line-height: 24px;
         font-size: 20px;
     }
 
-    .text_p-18 {
+    &_p-18 {
         line-height: 22px;
         font-size: 18px;
     }
 
-    .text_p-16 {
+    &_p-16 {
         line-height: 20px;
         font-size: 16px;
     }
 
-    .text_p-14 {
+    &_p-14 {
         line-height: 18px;
         font-size: 14px;
     }

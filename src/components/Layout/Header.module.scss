@@ -12,50 +12,53 @@
     border-bottom: 2px solid rgba(243, 243, 243, 1);
     z-index: 999;
 
-    .header__logo {
+    &__logo {
         width: 130px;
         height: 42px;
         cursor: pointer;
     }
 
-    .header__items {
+    &__items {
         display: flex;
         list-style: none;
-    }
+        justify-content: space-between;
+        gap: 24px;
 
-    .header__item {
-        padding: 0 24px;
-        cursor: pointer;
-        position: relative;
-        transition: all 200ms ease-in;
-
-        &:hover {
-            color: $text-accent;
-        }
-
-        &:after {
-            content: "";
-            position: absolute;
-            border-bottom: 3px solid $text-accent;
-            width: 100%;
-            left: 0;
-            bottom: -35px;
+        &__item {
+            cursor: pointer;
+            position: relative;
             transition: all 200ms ease-in;
-            opacity: 0;
-        }
 
-        &:hover:after {
-            opacity: 1;
+            &:hover {
+                color: $text-accent;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                border-bottom: 3px solid $text-accent;
+                width: 100%;
+                left: 0;
+                bottom: -35px;
+                transition: all 200ms ease-in;
+                opacity: 0;
+            }
+
+            &:hover:after {
+                opacity: 1;
+            }
         }
     }
 
-    .header__icons {
+
+
+    &__icons {
         display: flex;
         gap: 24px;
     }
 
-    .header__iconCart,
-    .header__iconUser {
+    &__iconCart,
+    &__iconUser {
         width: 30px;
         height: 30px;
         cursor: pointer;

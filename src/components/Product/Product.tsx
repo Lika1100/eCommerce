@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/default
-import React from "react";
 import { useParams } from "react-router-dom";
 import Button from "components/Button";
 import Loader from "components/Loader";
@@ -21,7 +19,7 @@ const Product = () => {
     }
 
     return (
-        <React.Fragment>
+        <>
             {!res.loading && res.product !== null && (
                 <div className={styles.card} key={res.product.id}>
                     <svg onClick={backToProducts} className={styles.card__arrow}>
@@ -35,7 +33,7 @@ const Product = () => {
                         <Text view='p-20' maxLines={3} color="secondary">
                             {res.product.description}
                         </Text>
-                        <Text view='title' weight='bold' className='contentSlot' tag="h2">
+                        <Text view='title' weight='bold' tag="h2">
                             {`$${res.product.price}`} 
                         </Text>
                         <div className={styles.card__footerButtons}>
@@ -45,7 +43,7 @@ const Product = () => {
                     </div>
                 </div>
             )}
-        </React.Fragment>
+        </>
     )
 }
 

@@ -14,15 +14,12 @@ function useNavigatePages(page: string) {
     function backToProducts() {
         navigate(`/${page}`)
     }
-    function goToChosenPage(chosenPage: number | string) {
-        navigate(`/${chosenPage}`)
-    }
+    
     return {
         back,
         next,
         goToProduct,
         backToProducts,
-        goToChosenPage
     }
 }
 
