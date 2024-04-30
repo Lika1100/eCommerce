@@ -13,11 +13,11 @@ export type TextProps = {
     maxLines?: number;
 };
 
-const Text: React.FC<TextProps> = ({ view, tag = "p", weight, children, color = "inherit", maxLines }) => {
+const Text: React.FC<TextProps> = ({ view, tag = "p", weight, children, color = "inherit", maxLines, className }) => {
     const Tag = tag
     return (
         <>
-            <Tag className={view && cn(styles.text, styles[`text_${view}`])}
+            <Tag className={view && cn(styles.text, styles[`text_${view}`], className)}
                 style={{
                     fontWeight: weight,
                     color: `$text-${color}`,

@@ -1,44 +1,61 @@
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Button from "components/Button";
 import Loader from "components/Loader";
 import Text from "components/Text";
-import baseUrl from "configs/baseUrl";
-import useFetch from "configs/useFetch";
+import { API_ENDPOINTS } from "configs/baseUrl";
 import useNavigatePages from "configs/useNavigatePages";
-import ListOfProducts from "types/listOfProducts";
+import ItemStore from "store/ItemStore";
+import { addProducts } from "utils/CartEvents/addProducts";
+import { useLocalStore } from "utils/useLocalStore";
+import img from "../../assets/imgSoon.jpg"
 import styles from "./Product.module.scss";
 
 
 const Product = () => {
-    const { productId = "1", page = "1" } = useParams();
-    const { backToProducts } = useNavigatePages(page)
-    const res = useFetch<ListOfProducts>(`${baseUrl}/${productId}`)
+    const { productId = "1" } = useParams();
+    const { backToProducts } = useNavigatePages()
+    
+    const productStore = useLocalStore(() => new ItemStore())
 
-    if (res.loading) {
+    useEffect(() => {
+        productStore.getItem(API_ENDPOINTS.PRODUCTS, `${productId}`)
+    }, [productStore, productId])
+
+
+    const {meta, item} = productStore
+    
+    if (meta === "initial" || meta === "loading") {
         return <Loader size="l" className={styles.card__loader} />
     }
 
     return (
         <>
-            {!res.loading && res.product !== null && (
-                <div className={styles.card} key={res.product.id}>
+            {meta === "success" && (
+                <div className={styles.card} key={item.id}>
                     <svg onClick={backToProducts} className={styles.card__arrow}>
                         <use xlinkHref="/sprite.svg#arrow" />
                     </svg>
-                    <img className={styles.card__image} src={res.product.images[0]} alt="card" />
+                    <img className={styles.card__image} 
+                      src={item.images[0]} alt="card" 
+                      onError={({currentTarget}) => {currentTarget.src = img}}
+                    />
                     <div className={styles.card__titleContainer}>
                         <Text view='title' maxLines={2} weight='bold' color='primary' tag="h2">
-                            {res.product.title}
+                            {item.title}
                         </Text>
                         <Text view='p-20' maxLines={3} color="secondary">
-                            {res.product.description}
+                            {item.description}
                         </Text>
                         <Text view='title' weight='bold' tag="h2">
-                            {`$${res.product.price}`} 
+                            {`$${item.price}`}
                         </Text>
                         <div className={styles.card__footerButtons}>
                             <Button disabled={false} className={""}>Buy now</Button>
-                            <Button className={styles.card__button} disabled={false}>Add to Cart</Button>
+                            <button className={styles.card__button} disabled={false} onClick={() => addProducts({...item, count: 1})}>
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -47,4 +64,4 @@ const Product = () => {
     )
 }
 
-export default Product
+export default observer(Product)

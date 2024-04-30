@@ -1,1 +1,1 @@
-export default './listOfProducts';
+export default "./SelectedType"

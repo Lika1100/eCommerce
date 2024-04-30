@@ -1,0 +1,15 @@
+@import "styles/styles";
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+
+    &__text {
+        width: 600px;
+        color: $text-secondary;
+    }
+}

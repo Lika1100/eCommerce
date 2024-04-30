@@ -37,11 +37,17 @@
     }
 
     &__button {
+        padding: 17px 20px;
         color: $text-primary;
         background-color: $button-primary-text;
         border: 1px solid $text-primary;
         opacity: 1;
         transform: all 200ms liner;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 18px;
 
         &:hover {
             background-color: $button-primary-text;
