@@ -44,8 +44,9 @@
     }
 
     &__list {
-        position: absolute;
+
         background-color: $input-bg;
+        max-height: 300px;
     }
 
     &__listItem {

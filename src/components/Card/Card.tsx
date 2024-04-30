@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import * as React from "react";
 import Button from "components/Button";
 import Text from "components/Text";
+import useNavigatePages from "configs/useNavigatePages";
 import { addProducts } from "utils/CartEvents/addProducts";
 import img from "../../assets/imgSoon.jpg"
 import styles from "./Card.module.scss";
@@ -17,9 +18,11 @@ export type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ id, title, description, images, price, className }) => {
+    const {goToProduct} = useNavigatePages()
     return (
         <div className={cn(className, styles.card)} key={id}>
             <img className={styles.card__image} 
+            onClick={() => goToProduct(id)}
             src={images[0]} alt="card" onError={({currentTarget}) => {
                 currentTarget.src = img
             }}/>

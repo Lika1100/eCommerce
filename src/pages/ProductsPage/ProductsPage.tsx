@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import * as React from 'react'
 import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useSearchParams } from 'react-router-dom';
@@ -32,7 +31,7 @@ function ProductsPage() {
         setHasMore(false)
       }
      
-      setTimeout(() => productsStore.getList(`${API_ENDPOINTS.PRODUCTS}`, `?limit=${limit*+page}&offset=&title=${titleParams}&categoryId=${id}`), 500)
+      productsStore.getList(`${API_ENDPOINTS.PRODUCTS}`, `?limit=${limit*+page}&offset=&title=${titleParams}&categoryId=${id}`)
 
     }, [productsStore, searchParams, setSearchParams])
 
@@ -45,6 +44,7 @@ function ProductsPage() {
       } else {
         page = String(+page + 1)
       }
+
       searchParams.set("page", page)
       setSearchParams(searchParams)
       rootStore.query.setSearch(searchParams.toString())
@@ -62,7 +62,7 @@ function ProductsPage() {
       <SelectedFilter />
       <InfiniteScroll
         dataLength={list.length}
-        scrollThreshold={"100px"}
+        scrollThreshold={"200px"}
         next={next}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}

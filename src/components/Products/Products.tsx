@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import Card from "components/Card";
-import useNavigatePages from "configs/useNavigatePages";
 import { ProductModel } from "store/models/products";
 import styles from "./Products.module.scss"
 
@@ -10,15 +9,13 @@ type ProductsProps = {
 }
 
 const Products = ({list}: ProductsProps) => {
-
-    const {goToProduct} = useNavigatePages();
     return (
-     <div className={styles.scrollableDiv}>
-    <div className={styles.cards} id="scrollableDiv">
+    <div className={styles.scrollableDiv}>
+      <div className={styles.cards} id="scrollableDiv">
         {list
             .map(({ price, images, description, id, title }) => {
                 return (
-                    <div key={id} onClick={() => goToProduct(id)}>
+                    <div key={id}>
                         <Card price={price} images={images} id={id}
                             description={description} title={title}
                             key={id} className={styles.cards__item}
@@ -26,7 +23,7 @@ const Products = ({list}: ProductsProps) => {
                     </div>
                 )
         })}
-    </div>
+      </div>
     </div>   
     )
 }

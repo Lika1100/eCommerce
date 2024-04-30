@@ -2,8 +2,8 @@
 
 
 .scrollableDiv {
-    max-height: 2500px;
-    height: 100%;
+    // height  - какая нужна высота?
+    height: 1200px;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
@@ -31,7 +31,6 @@
 
         &:hover {
             box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.25);
-            cursor: pointer;
         }
     }
 
