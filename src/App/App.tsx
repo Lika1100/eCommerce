@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Cart from 'components/Cart';
 import Categories from 'components/Categories';
@@ -7,42 +6,6 @@ import Layout from 'components/Layout';
 import Product from 'components/Product';
 import ProductsByCategories from 'components/ProductsByCategories';
 import ProductsPage from 'pages/ProductsPage';
-
-
-export const route = [
-  {
-    element: <Layout />,
-    children: [
-      {
-        path: "/page/:page",
-        element: <ProductsPage />,
-        index: true,
-
-      },
-      {
-        path: "/",
-        element: <Navigate to="/page/1"/>
-      },
-      {
-        path: "/product/:productId",
-        element: <Product />
-      },
-      {
-        path: "/categories",
-        element: <Categories />,
-
-      },
-      {
-        path: "/categoryId/:id",
-        element: <ProductsByCategories />
-      }
-    ]
-  },
-  {
-    path: "*",
-    element: <Navigate to="/" replace />
-  }
-]
 
 
 
