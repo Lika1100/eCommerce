@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Button from "components/Button";
 import Loader from "components/Loader";
+import RelatedItems from "components/RelatedItems";
 import Text from "components/Text";
 import { API_ENDPOINTS } from "configs/baseUrl";
 import useNavigatePages from "configs/useNavigatePages";
@@ -60,6 +61,7 @@ const Product = () => {
                     </div>
                 </div>
             )}
+            <RelatedItems />
         </>
     )
 }

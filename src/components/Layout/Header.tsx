@@ -19,12 +19,11 @@ export default function Header() {
                     </svg>
                     
                 </Link>
-                <div>
                     <img 
                       onClick={onClick}
                       src={burger} 
-                      className={styles.header__burgerImg}/>
-                </div>
+                      className={styles.header__burgerImg}
+                    />
                 <nav className={cn(styles.header__items, styles.header__burger,{[styles.header__burger_open]: isOpen})}>
                         <img 
                           onClick={() => setIsOpen(false)}

@@ -19,6 +19,7 @@ export type CardProps = {
 
 const Card: React.FC<CardProps> = ({ id, title, description, images, price, className }) => {
     const {goToProduct} = useNavigatePages()
+    
     return (
         <div className={cn(className, styles.card)} key={id}>
             <img className={styles.card__image} 

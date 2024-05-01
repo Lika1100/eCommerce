@@ -31,30 +31,30 @@
         list-style: none;
         justify-content: space-between;
         gap: 24px;
+    }
 
-        &__item {
-            cursor: pointer;
-            position: relative;
+    &__item {
+        cursor: pointer;
+        position: relative;
+        transition: all 200ms ease-in;
+
+        &:hover {
+            color: $text-accent;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            border-bottom: 3px solid $text-accent;
+            width: 100%;
+            left: 0;
+            bottom: -10px;
             transition: all 200ms ease-in;
+            opacity: 0;
+        }
 
-            &:hover {
-                color: $text-accent;
-            }
-
-            &:after {
-                content: "";
-                position: absolute;
-                border-bottom: 3px solid $text-accent;
-                width: 100%;
-                left: 0;
-                bottom: -35px;
-                transition: all 200ms ease-in;
-                opacity: 0;
-            }
-
-            &:hover:after {
-                opacity: 1;
-            }
+        &:hover:after {
+            opacity: 1;
         }
     }
 
