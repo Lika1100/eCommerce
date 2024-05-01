@@ -61,7 +61,7 @@ const Product = () => {
                     </div>
                 </div>
             )}
-            <RelatedItems />
+            <RelatedItems categoryId={item.category?.id}/>
         </>
     )
 }
