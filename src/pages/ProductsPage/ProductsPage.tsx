@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useSearchParams } from 'react-router-dom';
 import About from 'components/About';
@@ -18,18 +18,12 @@ import { useLocalStore } from 'utils/useLocalStore';
 function ProductsPage() {
     const productsStore = useLocalStore(() => new CatalogStore());
     const [searchParams, setSearchParams] = useSearchParams()
-    const [hasMore, setHasMore] = useState(true)
-    
     
     useEffect(() => {
       const pageParams = rootStore.query.getParam("page")
       const page = pageParams === undefined ? "1" : pageParams
       const titleParams = rootStore.query.getParam("title") === undefined ? "" : rootStore.query.getParam("title")
       const id = rootStore.query.getParam("categoryId") === undefined ? "" : rootStore.query.getParam("categoryId")
-      
-      if (limit*+page % limit !== 0){
-        setHasMore(false)
-      }
      
       productsStore.getList(`${API_ENDPOINTS.PRODUCTS}`, `?limit=${limit*+page}&offset=&title=${titleParams}&categoryId=${id}`)
 
@@ -50,7 +44,6 @@ function ProductsPage() {
       rootStore.query.setSearch(searchParams.toString())
     }
 
-
     if (meta === Meta.initial || meta === Meta.loading) {
       return <Loader size="l" className={styles.cards__loader} />
     }
@@ -62,9 +55,8 @@ function ProductsPage() {
       <SelectedFilter />
       <InfiniteScroll
         dataLength={list.length}
-        scrollThreshold={"200px"}
         next={next}
-        hasMore={hasMore}
+        hasMore={true}
         loader={<h4>Loading...</h4>}
         endMessage={
           <p style={{ textAlign: 'center' }}>

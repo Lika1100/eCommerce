@@ -10,7 +10,7 @@ type ProductsProps = {
 
 const Products = ({list}: ProductsProps) => {
     return (
-    <div className={styles.scrollableDiv}>
+    <div className={list.length >= 9 ? styles.scrollableDiv : ""}>
       <div className={styles.cards} id="scrollableDiv">
         {list
             .map(({ price, images, description, id, title }) => {

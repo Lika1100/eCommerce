@@ -11,7 +11,7 @@ import styles from "./ProductsByCategories.module.scss";
 
 function ProductsByCategories() {
     const {id = "1"} = useParams()
-    const {backToProducts, goToProduct} = useNavigatePages()
+    const {backToProducts} = useNavigatePages()
 
     const productsCategories = useLocalStore(() => new CatalogStore())
     
@@ -33,7 +33,7 @@ function ProductsByCategories() {
                 {meta === "success" && list
                     .map(({ price, images, description, id, title }) => {
                         return (
-                            <div key={id} onClick={() => goToProduct(id)}>
+                            <div key={id}>
                                 <Card price={price} images={images} id={id}
                                     description={description} title={title}
                                     key={id} className={styles.categories__item}
