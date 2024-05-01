@@ -60,10 +60,12 @@ export default function Cart() {
                             +
                         </button>
                     </div>
-                    <p className={styles.cart__price}>{price*count}$</p>
-                    <img src={deleteSvg}
-                      onClick={() => onDelete({price, title, count, images, id})} 
-                      className={styles.cart__removeItem}/>
+                    <div className={styles.cart__right}>
+                      <p className={styles.cart__price}>{price*count}$</p>
+                      <img src={deleteSvg}
+                        onClick={() => onDelete({price, title, count, images, id})} 
+                        className={styles.cart__removeItem}/>
+                    </div>
                 </div>
             )
         })}

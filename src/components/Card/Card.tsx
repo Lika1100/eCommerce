@@ -22,10 +22,11 @@ const Card: React.FC<CardProps> = ({ id, title, description, images, price, clas
     return (
         <div className={cn(className, styles.card)} key={id}>
             <img className={styles.card__image} 
-            onClick={() => goToProduct(id)}
-            src={images[0]} alt="card" onError={({currentTarget}) => {
-                currentTarget.src = img
-            }}/>
+              onClick={() => goToProduct(id)}
+              src={images[0]} 
+              alt="card" 
+              onError={({currentTarget}) => currentTarget.src = img}
+            />
             <div className={styles.card__titleContainer}>
                 <Text view='p-20' maxLines={2} weight='bold' color='primary'>{title}</Text>
                 <Text view='p-16' maxLines={3} color="secondary">{description}</Text>
