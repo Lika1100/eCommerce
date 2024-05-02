@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
-import Container from "components/Container";
+import { useQueryParamsStoreInit } from "store/RootStore/hooks/useQueryParams";
 import Header from "./Header";
-//import s from "./Layout.module.scss";
+
+
 
 function Layout():JSX.Element {
+    useQueryParamsStoreInit()
     return (
-            <Container>
+            <>
                 <Header />
                 <Outlet />
-            </Container>
+            </>
     );
 }
 

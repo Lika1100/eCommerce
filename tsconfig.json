@@ -25,6 +25,15 @@
       ],
       "types": [
         "types/*"
+      ],
+      "store": [
+        "store/*"
+      ],
+      "pages": [
+        "pages/*"
+      ],
+      "assets": [
+        "assets/*"
       ]
     },
     "moduleResolution": "bundler",

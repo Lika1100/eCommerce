@@ -1,3 +1,1 @@
-const baseUrl = `https://api.escuelajs.co/api/v1/products`;
-
-export default baseUrl;
+export const BASE_URL = `https://api.escuelajs.co/api/v1/`;

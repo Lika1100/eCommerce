@@ -1,32 +1,65 @@
+import cn from "classnames";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import burger from "assets/burger.svg";
+import close from "assets/close.svg"
 import styles from "./Header.module.scss";
 
 export default function Header() {
+    const [isOpen, setIsOpen] = useState(false)
+    const onClick = () => {
+        setIsOpen(prev => !prev)
+    }
     return (
         <>
-            <header className={styles.header}>
-                <Link to="/" className={styles.header__logo}>
-                    <svg><use xlinkHref="/sprite.svg#logo" />
+            <header className={cn(styles.header)}>
+                <Link to="/">
+                    <svg className={styles.header__logo}>
+                        <use xlinkHref="/sprite.svg#logo" />
                     </svg>
+                    
                 </Link>
-                <nav className={styles.header__items}>
-                        <Link to="/" className={styles.header__item}>
+                    <img 
+                      onClick={onClick}
+                      src={burger} 
+                      className={styles.header__burgerImg}
+                    />
+                <nav className={cn(styles.header__items, styles.header__burger,{[styles.header__burger_open]: isOpen})}>
+                        <img 
+                          onClick={() => setIsOpen(false)}
+                          src={close} 
+                          className={styles.header__closeImg}
+                        />
+                        <Link to="/" 
+                          className={styles.header__item} 
+                          onClick={() => setIsOpen(false)}>
                             Products
                         </Link>
-                        <Link to="#"  className={styles.header__item}>
+                        <Link 
+                          to="/categories"  
+                          className={styles.header__item} 
+                          onClick={() => setIsOpen(false)}>
                             Categories
                         </Link>
-                        <Link to="#" className={styles.header__item}>
+                        <Link 
+                          to="#" 
+                          className={styles.header__item} 
+                          onClick={() => setIsOpen(false)}>
                             About us
                         </Link>
                 </nav>
                 <nav className={styles.header__icons}>
-                    <Link to="#" className={styles.header__iconCart}>
-                        <svg><use xlinkHref="/sprite.svg#cart" /></svg>
+                    <Link to="/cart">
+                        <svg className={styles.header__iconCart}>
+                            <use xlinkHref="/sprite.svg#cart" />
+                        </svg>
                     </Link>
-                    <Link to="#" className={styles.header__iconUser}>
-                        <svg><use xlinkHref="/sprite.svg#user" /></svg>
+                    <Link to="#">
+                        <svg className={styles.header__iconUser}>
+                            <use xlinkHref="/sprite.svg#user" />
+                        </svg>
                     </Link>
+
                 </nav>
             </header>
         </>

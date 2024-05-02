@@ -8,14 +8,16 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     loading?: boolean
     children: React.ReactNode
     className: string
-    disabled: boolean
+    disabled: boolean,
+    onClick?: () => void
 };
 
-const Button: React.FC<ButtonProps> = ({ loading, children, className, disabled }): JSX.Element => {
+const Button: React.FC<ButtonProps> = ({ loading, children, className, disabled, onClick }): JSX.Element => {
     return (
         <button
             className={cn(styles.button, className)}
             disabled={disabled || loading}
+            onClick={onClick}
         >
             {loading && <Loader size='s' color="#fff" />}
             {children}
